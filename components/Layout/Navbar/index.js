@@ -151,16 +151,16 @@ const Navbar = () => {
         ))}
 
         <div className="mt-4 space-x-5 text-2xl">
-          <Link href={"https://web.facebook.com/etzbenjamin.nkem"} target="_blank">
+          <Link href={"https://web.facebook.com/oyenolaphilip"} target="_blank">
             <i className="cursor-pointer ri-facebook-circle-fill"></i>
           </Link>
-          <Link href={"https://www.linkedin.com/in/benjamin-nkem-23526720b/"} target="_blank">
+          <Link href={"https://www.linkedin.com/in/oyenolaphilip/"} target="_blank">
             <i className="cursor-pointer ri-linkedin-line"></i>
           </Link>
-          <Link href={"https://twitter.com/MainNkem"} target="_blank">
+          <Link href={"https://twitter.com/oyenolaayomi"} target="_blank">
             <i className="cursor-pointer ri-twitter-fill"></i>
           </Link>
-          <Link href={"https://github.com/benjaminnkem"} target="_blank">
+          <Link href={"https://github.com/coderbluck12"} target="_blank">
             <i className="cursor-pointer ri-github-fill"></i>
           </Link>
         </div>
