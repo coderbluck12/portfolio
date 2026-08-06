@@ -34,13 +34,13 @@ const Footer = () => {
               </div>
               <div>
                 <div className="flex justify-center space-x-4 text-2xl md:justify-start">
-                  <Link href={"https://www.linkedin.com/in/philipoyenola/"} target="_blank">
+                  <Link href={"https://www.linkedin.com/in/oyenolaphilip/"} target="_blank">
                     <i className="cursor-pointer ri-linkedin-line"></i>
                   </Link>
                   <Link href={"https://twitter.com/oyenolaayomi"} target="_blank">
                     <i className="cursor-pointer ri-twitter-fill hover:text-primary"></i>
                   </Link>
-                  <Link href={"https://github.com/oyenolaphilipinc"} target="_blank">
+                  <Link href={"https://github.com/coderbluck12"} target="_blank">
                     <i className="cursor-pointer ri-github-fill"></i>
                   </Link>
                   <Link href={"https://wa.me/+2349117996123"} target="_blank">
