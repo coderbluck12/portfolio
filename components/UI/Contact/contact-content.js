@@ -77,7 +77,7 @@ const ContactContent = () => {
               <ul className="mt-1 space-y-2">
                 <li className="text-lg font-light">
                   <span>Github</span> (<i className="ri-github-fill"></i>):{" "}
-                  <Link target="_blank" href={"https://github.com/oyenolaphilipinc"}>
+                  <Link target="_blank" href={"https://github.com/coderbluck12"}>
                     <span className="font-bold text-primary">oyenolaphilipinc</span>
                   </Link>
                 </li>
