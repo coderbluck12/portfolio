@@ -64,7 +64,7 @@ const About = () => {
                 </p>
 
                 <div className="w-fit">
-                  <a download={true} href={"/docs/Nkem_Benjamin_Resume.pdf"}>
+                  <a download="Philip_Oyenola_Resume.pdf" href={"/docs/philipresume.pdf"}>
                     <button className="flex items-center gap-2 px-4 py-2 transition-colors duration-300 bg-transparent border rounded-md hover:bg-primary hover:text-primaryBlack-100 border-primary text-primary">
                       <span>Download CV</span> <DownloadIcon />
                     </button>

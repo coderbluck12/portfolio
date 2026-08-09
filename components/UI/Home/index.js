@@ -2,7 +2,6 @@
 import Intro from "./intro";
 import About from "./about";
 import Skills from "./skills";
-import PersonalStats from "./personal-stats";
 import Education from "./education";
 import Projects from "./projects";
 import Offer from "./offer";
@@ -18,7 +17,6 @@ const HomeContent = () => {
       <Intro />
       <About />
       <Skills />
-      <PersonalStats />
       <Education />
       <Projects />
       <Offer />
