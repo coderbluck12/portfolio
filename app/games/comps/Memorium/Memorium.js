@@ -1,13 +1,34 @@
 "use client";
 import { useState, useEffect } from "react";
 import { RotateCcw, Trophy } from "lucide-react";
+import {
+  Lightning,
+  RocketLaunch,
+  Diamond,
+  GameController,
+  Palette,
+  MagicWand,
+  Star,
+  Car,
+  Question,
+} from "@phosphor-icons/react";
 
-const EMOJIS = ["⚡", "🚀", "💎", "🎮", "🎨", "🔮", "🌟", "🏎️"];
+const ICON_LIST = [
+  { name: "Lightning", Icon: Lightning },
+  { name: "RocketLaunch", Icon: RocketLaunch },
+  { name: "Diamond", Icon: Diamond },
+  { name: "GameController", Icon: GameController },
+  { name: "Palette", Icon: Palette },
+  { name: "MagicWand", Icon: MagicWand },
+  { name: "Star", Icon: Star },
+  { name: "Car", Icon: Car },
+];
 
 const createShuffledDeck = () => {
-  const deck = [...EMOJIS, ...EMOJIS].map((emoji, idx) => ({
+  const deck = [...ICON_LIST, ...ICON_LIST].map((item, idx) => ({
     id: idx,
-    emoji,
+    name: item.name,
+    Icon: item.Icon,
     isFlipped: false,
     isMatched: false,
   }));
@@ -52,13 +73,13 @@ const Memorium = () => {
       setIsChecking(true);
       const [firstIdx, secondIdx] = newFlipped;
 
-      if (newCards[firstIdx].emoji === newCards[secondIdx].emoji) {
+      if (newCards[firstIdx].name === newCards[secondIdx].name) {
         newCards[firstIdx].isMatched = true;
         newCards[secondIdx].isMatched = true;
         setCards(newCards);
         setMatches((m) => {
           const updatedMatches = m + 1;
-          if (updatedMatches === EMOJIS.length) {
+          if (updatedMatches === ICON_LIST.length) {
             setIsWon(true);
           }
           return updatedMatches;
@@ -87,7 +108,7 @@ const Memorium = () => {
         <div>
           <span>Matches: </span>
           <span className="font-bold text-primary">
-            {matches} / {EMOJIS.length}
+            {matches} / {ICON_LIST.length}
           </span>
         </div>
         <button
@@ -107,21 +128,28 @@ const Memorium = () => {
       )}
 
       <div className="grid grid-cols-4 gap-3 w-full max-w-sm">
-        {cards.map((card, idx) => (
-          <div
-            key={idx}
-            onClick={() => handleCardClick(idx)}
-            className={`h-20 flex items-center justify-center text-2xl font-bold rounded-lg cursor-pointer transition-all duration-300 select-none border ${
-              card.isMatched
-                ? "bg-primary/20 border-primary text-white"
-                : card.isFlipped
-                ? "bg-primary text-black border-primary scale-105"
-                : "bg-white/10 border-white/20 hover:bg-white/20 text-transparent"
-            }`}
-          >
-            {card.isFlipped || card.isMatched ? card.emoji : "❓"}
-          </div>
-        ))}
+        {cards.map((card, idx) => {
+          const CardIcon = card.Icon;
+          return (
+            <div
+              key={idx}
+              onClick={() => handleCardClick(idx)}
+              className={`h-20 flex items-center justify-center text-3xl font-bold rounded-lg cursor-pointer transition-all duration-300 select-none border ${
+                card.isMatched
+                  ? "bg-primary/20 border-primary text-primary"
+                  : card.isFlipped
+                  ? "bg-primary text-black border-primary scale-105"
+                  : "bg-white/10 border-white/20 hover:bg-white/20 text-white/40"
+              }`}
+            >
+              {card.isFlipped || card.isMatched ? (
+                <CardIcon size={36} weight="duotone" />
+              ) : (
+                <Question size={28} weight="bold" />
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
