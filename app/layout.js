@@ -11,6 +11,19 @@ import Providers from "@/lib/utils/providers";
 import { dmSans } from "@/lib/utils/fonts";
 config.autoAddCss = false;
 
+export const metadata = {
+  title: "Philip Oyenola (CoderBluck) - Portfolio",
+  description: "Philip Oyenola (CoderBluck) portfolio website",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
