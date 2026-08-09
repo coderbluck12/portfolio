@@ -1,5 +1,6 @@
 "use client";
 import TicTokToe from "./comps/Tic/TicTakToe";
+import Memorium from "./comps/Memorium/Memorium";
 import { createContext, useState } from "react";
 
 export const GameContainerContext = createContext();
@@ -56,11 +57,9 @@ const GameContainer = ({ games }) => {
                 </>
               )}
               {selectedGame === "Memorium" && (
-                <>
-                  <div>
-                    <p className="opacity-50 text-center">Under Construction 🚧👷‍♂️</p>
-                  </div>
-                </>
+                <div>
+                  <Memorium />
+                </div>
               )}
             </div>
           </div>
