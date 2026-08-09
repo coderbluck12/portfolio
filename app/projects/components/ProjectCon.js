@@ -168,7 +168,7 @@ const ProjectCon = ({ project, index }) => {
 
           {/* In - infos */}
           <div className="mt-1 md:hidden">
-            {(project.github_repo.length > 0 || Object.keys(project.live_) > 0) && (
+            {(project.github_repo?.length > 0 || project.live_?.url) && (
               <>
                 <div>
                   <p className="text-xl font-bold">
