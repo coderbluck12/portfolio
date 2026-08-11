@@ -24,12 +24,12 @@ const Intro = () => {
     <div className="container mx-auto px-4 overflow-hidden">
       <section className="flex items-center justify-center min-h-screen py-20 section invisible" id="me" ref={meRef}>
         <div className="text-center space-y-6 max-w-5xl mx-auto">
-          <span
-            className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs md:text-sm font-semibold uppercase tracking-widest"
+          <h1
+            className="text-base md:text-xl font-bold text-primary uppercase tracking-widest"
             id="dev_text"
           >
-            FullStack Web Developer & AI Specialist
-          </span>
+            FullStack Web Developer
+          </h1>
 
           <div className="font-extrabold text-primary text-5xl sm:text-7xl md:text-8xl lg:text-[8rem] tracking-tight leading-none uppercase">
             <p className="land_t text-white">CRAFTING</p>
