@@ -136,61 +136,68 @@ const TicTokToe = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 space-y-4">
-      {/* Scoreboard */}
-      <div className="flex items-center justify-between w-full max-w-xs px-4 py-2 text-sm border rounded-lg border-primary/20 bg-black/40">
-        <div className="flex items-center gap-1.5 text-primary">
-          <User size={16} />
-          <span className="font-medium">You (X):</span>
-          <span className="font-bold">{scores.player}</span>
-        </div>
-        <div className="flex items-center gap-1.5 text-slate-300">
-          <Bot size={16} className="text-cyan-400" />
-          <span className="font-medium">CPU (O):</span>
-          <span className="font-bold text-cyan-400">{scores.computer}</span>
-        </div>
-        <button
-          onClick={resetGame}
-          className="flex items-center gap-1 px-2 py-1 text-xs border rounded-md border-primary text-primary hover:bg-primary hover:text-black duration-150"
-          title="Reset Game"
-        >
-          <RotateCcw size={14} /> Reset
-        </button>
-      </div>
-
-      {/* Turn & Status Indicator */}
-      <div className="text-center">
-        {gameState === "playing" ? (
-          <p className="text-sm font-semibold text-slate-300">
-            {isPlayerTurn ? (
-              <span className="text-primary">Your Turn (X)</span>
-            ) : (
-              <span className="text-cyan-400 animate-pulse">Computer Thinking (O)...</span>
-            )}
-          </p>
-        ) : (
-          <div className="flex items-center justify-center gap-2 text-base font-bold text-primary animate-bounce">
-            <Trophy size={18} />
-            <span>
-              {winnerInfo?.winner === "X"
-                ? "You Won!"
-                : winnerInfo?.winner === "O"
-                ? "Computer Won!"
-                : "It's a Draw!"}
-            </span>
+    <div className="flex flex-col items-center justify-center p-2 sm:p-4 space-y-4 w-full max-w-sm mx-auto">
+      {/* Responsive Scoreboard */}
+      <div className="w-full space-y-2">
+        <div className="grid grid-cols-2 gap-2">
+          {/* Player Score */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-primary/10 border border-primary/30 text-primary">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <User size={16} className="shrink-0" />
+              <span className="font-semibold text-xs sm:text-sm truncate">You (X)</span>
+            </div>
+            <span className="font-extrabold text-base ml-1">{scores.player}</span>
           </div>
-        )}
+
+          {/* Computer Score */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+            <div className="flex items-center gap-1.5 min-w-0">
+              <Bot size={16} className="shrink-0" />
+              <span className="font-semibold text-xs sm:text-sm truncate">CPU (O)</span>
+            </div>
+            <span className="font-extrabold text-base ml-1">{scores.computer}</span>
+          </div>
+        </div>
+
+        {/* Action Controls & Turn Indicator */}
+        <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/[0.03] border border-white/10">
+          <div className="text-xs sm:text-sm font-semibold">
+            {gameState === "playing" ? (
+              isPlayerTurn ? (
+                <span className="text-primary">Your Turn (X)</span>
+              ) : (
+                <span className="text-cyan-400 animate-pulse">CPU Thinking (O)...</span>
+              )
+            ) : (
+              <span className="text-primary font-bold flex items-center gap-1">
+                <Trophy size={14} />
+                {winnerInfo?.winner === "X"
+                  ? "You Won!"
+                  : winnerInfo?.winner === "O"
+                  ? "CPU Won!"
+                  : "Draw!"}
+              </span>
+            )}
+          </div>
+
+          <button
+            onClick={resetGame}
+            className="flex items-center gap-1 px-3 py-1 text-xs font-semibold rounded-lg bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-black transition-all active:scale-95 shadow-sm"
+          >
+            <RotateCcw size={13} /> Reset
+          </button>
+        </div>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-3 gap-2.5 w-full max-w-xs p-3 border rounded-xl border-white/10 bg-white/[0.02]">
+      {/* Responsive Grid */}
+      <div className="grid grid-cols-3 gap-2 sm:gap-2.5 w-full p-2.5 sm:p-3 border rounded-2xl border-white/10 bg-white/[0.02]">
         {board.map((cell, idx) => {
           const isWinningCell = winnerInfo?.combo?.includes(idx);
           return (
             <div
               key={idx}
               onClick={() => handleCellClick(idx)}
-              className={`h-24 flex items-center justify-center text-4xl font-extrabold rounded-lg cursor-pointer transition-all duration-200 select-none border ${
+              className={`h-20 sm:h-24 flex items-center justify-center text-3xl sm:text-4xl font-extrabold rounded-xl cursor-pointer transition-all duration-200 select-none border ${
                 isWinningCell
                   ? "bg-primary/20 border-primary text-primary scale-105"
                   : cell === "X"
