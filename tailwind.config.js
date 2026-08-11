@@ -12,11 +12,12 @@ module.exports = {
         padding: "2rem",
       },
       colors: {
-        primary: "#E9DFCE",
+        primary: "#22c55e",
+        primaryDark: "#16a34a",
         primaryBlack: {
-          100: "#1e2125",
-          200: "#35373b",
-          300: "#4b4d51",
+          100: "#0b0f17",
+          200: "#131927",
+          300: "#1f293d",
         },
       },
     },

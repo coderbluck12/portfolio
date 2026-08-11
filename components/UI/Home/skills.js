@@ -7,91 +7,74 @@ import {
 } from "@/lib/utils/transitions";
 import Link from "next/link";
 import skills from "@/lib/store/skills";
-import { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
+import { useRef } from "react";
 
 const Skills = () => {
   const ref = useRef(null);
 
-  useLayoutEffect(() => {
-    const cxt = gsap.context(() => {
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: ref.current,
-          start: "top bottom",
-          end: "+=200",
-          scrub: 1,
-        },
-      });
-
-      tl2.from("#summary_text", { xPercent: -100, opacity: 0 });
-    }, ref);
-
-    return () => cxt.revert();
-  }, []);
-
   return (
-    <div className="bg-gradient-to-b from-black via-black" id="stats">
-      <section className="relative min-h-screen" id="about" ref={ref}>
-        <h3
-          className="absolute md:-top-[15rem] top-8 z-[10] -left-5 font-extrabold md:text-[9rem] text-[6rem] text-primaryBlack-200/70"
-          id="summary_text"
-        >
-          Summary
-        </h3>
+    <div className="bg-[#0b0f17] py-20" id="stats">
+      <section className="container mx-auto" id="about" ref={ref}>
+        {/* Section Header */}
+        <div className="mb-16">
+          <span className="text-xs uppercase tracking-widest text-primary font-bold">Capabilities</span>
+          <h3 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mt-1">
+            Summary & Skills<span className="text-primary">.</span>
+          </h3>
+        </div>
 
-        <div className="pb-10 pt-[12rem]">
-          <div className="container min-h-[32rem] space-y-28">
-            <div className="grid md:grid-cols-2">
-              <div className="p-4 border-b border-opacity-50 md:border-r md:border-b-0 border-cyan-50">
-                <TransitionParent>
-                  <TransitionFromRight>
-                    <p>
-                      I strive to create seamless user experiences by combining my strong problem-solving abilities with
-                      a keen eye for design aesthetics. <br /> <br />
-                    </p>
-                  </TransitionFromRight>
-                  <TransitionFromRight>
-                    <p>
-                      Outside the coding/development space, I read books, go for walks to find inspiration, read
-                      documentaries and explore trending technologies.
-                      <br /> <br />
-                    </p>
-                  </TransitionFromRight>
+        <div className="space-y-16">
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-xl">
+              <TransitionParent addClass="space-y-6 text-slate-300 leading-relaxed text-base md:text-lg">
+                <TransitionFromRight>
+                  <p>
+                    I strive to create seamless user experiences by combining strong technical problem-solving with a keen eye for modern design aesthetics.
+                  </p>
+                </TransitionFromRight>
+                <TransitionFromRight>
+                  <p>
+                    Outside of code, I continuously research emerging web tech, refine software architectures, and explore AI automation tools.
+                  </p>
+                </TransitionFromRight>
 
-                  <TransitionFromRight>
-                    <p>
-                      If you&apos;re interested in recruiting me to work on a project/company, I&apos;m open for offers!
-                      Let&apos;s Connect <i className="ri-link-m"></i>
-                    </p>
-                  </TransitionFromRight>
+                <TransitionFromRight>
+                  <p className="font-semibold text-white">
+                    Available for freelance projects, technical contract work, and full-time roles.
+                  </p>
+                </TransitionFromRight>
 
-                  <TransitionFromRight addClass="mt-4">
-                    <Link href={"/contact"}>
-                      <button className="px-4 md:py-2 py-[6px] mt-4 duration-200 border rounded-xl border-primary hover:bg-primary/90">
-                        Contact Me
-                      </button>
-                    </Link>
-                  </TransitionFromRight>
-                </TransitionParent>
-              </div>
+                <TransitionFromRight addClass="pt-2">
+                  <Link href={"/contact"}>
+                    <button className="px-6 py-3 transition-all duration-300 bg-primary/10 border border-primary/40 rounded-xl hover:bg-primary hover:text-black font-semibold text-primary shadow-lg hover:shadow-primary/20">
+                      Contact Me <i className="ri-arrow-right-line ml-1"></i>
+                    </button>
+                  </Link>
+                </TransitionFromRight>
+              </TransitionParent>
             </div>
+          </div>
 
-            <div>
-              <TransitionOpacityInView addClass="text-4xl mb-2 font-bold">
-                <p>Skills</p>
-              </TransitionOpacityInView>
+          <div>
+            <TransitionOpacityInView addClass="text-2xl md:text-3xl mb-6 font-bold text-white flex items-center gap-2">
+              <span>Technical Stack</span>
+              <span className="h-[2px] flex-1 bg-primary/20"></span>
+            </TransitionOpacityInView>
 
-              <TransitionParentFast addClass="grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-3 grid-cols-2 select-none text-center gap-4">
-                {skills.frontend.map((skill, idx) => (
-                  <TransitionOpacity key={idx}>
-                    <div className="py-5 space-y-1 duration-200 border rounded-md cursor-pointer border-primary/10 hover:bg-primary/10">
-                      <div className="grid place-content-center">{skill.icon}</div> <p>{skill.label}</p>
+            <TransitionParentFast addClass="grid lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-3 grid-cols-2 select-none text-center gap-4">
+              {skills.frontend.map((skill, idx) => (
+                <TransitionOpacity key={idx}>
+                  <div className="py-5 px-3 space-y-2 duration-300 border rounded-xl cursor-pointer bg-white/[0.02] border-white/10 hover:bg-primary/10 hover:border-primary/40 transition-all group">
+                    <div className="grid place-content-center text-primary group-hover:scale-110 transition-transform duration-300">
+                      {skill.icon}
                     </div>
-                  </TransitionOpacity>
-                ))}
-              </TransitionParentFast>
-            </div>
+                    <p className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">
+                      {skill.label}
+                    </p>
+                  </div>
+                </TransitionOpacity>
+              ))}
+            </TransitionParentFast>
           </div>
         </div>
       </section>

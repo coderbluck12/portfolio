@@ -12,7 +12,7 @@ import ContactContent from "../Contact/contact-content";
 const HomeContent = () => {
   return (
     <main className="relative">
-      <div id="home_bg" className="fixed top-0 left-0 w-full h-full bg-[#1e2125] -z-[10]"></div>
+      <div id="home_bg" className="fixed top-0 left-0 w-full h-full bg-[#0b0f17] -z-[10]"></div>
 
       <Intro />
       <About />

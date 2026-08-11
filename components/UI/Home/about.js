@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { useLayoutEffect } from "react";
 import { DownloadIcon } from "lucide-react";
 import Image from "next/image";
-
 import { useStore } from "@/lib/utils/providers";
 
 const About = () => {
@@ -22,17 +21,7 @@ const About = () => {
         },
       });
 
-      const tl2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#about_",
-          start: "top bottom",
-          end: "+=300",
-          scrub: 1,
-        },
-      });
-
       tl.to(".star_icon", { rotate: 360 });
-      tl2.from("#about_text", { xPercent: -100, opacity: 0 });
     }, homeRef);
 
     return () => cxt.revert();
@@ -40,64 +29,57 @@ const About = () => {
 
   return (
     <>
-      <div className="h-[4rem] bg-gradient-to-t pt-[15rem] from-black"></div>
-      <section className="relative min-h-screen bg-black" id="about_">
-        <div>
-          <h3
-            className="absolute -top-[15rem] z-[10] -left-5 font-extrabold md:text-[9rem] text-[6rem] text-primaryBlack-200/70"
-            id="about_text"
-          >
-            About
-          </h3>
+      <div className="h-[2rem] bg-gradient-to-b from-[#0b0f17] to-black"></div>
+      <section className="relative py-24 bg-black overflow-hidden" id="about_">
+        <div className="container relative z-10 mx-auto">
+          {/* Header */}
+          <div className="mb-16">
+            <span className="text-xs uppercase tracking-widest text-primary font-bold">Biography</span>
+            <h3 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mt-1">
+              About Me<span className="text-primary">.</span>
+            </h3>
+          </div>
 
-          <div className="absolute top-0 right-20 -z-10 star_icon">
+          <div className="absolute top-10 right-10 -z-10 star_icon opacity-30">
             <Star />
           </div>
 
-          <div className="container">
-            <div className="z-50 flex flex-col-reverse items-center grid-cols-2 gap-16 md:grid">
-              <TransitionReveal addClass="space-y-8">
-                <p className="text-lg leading-loose text-primary/80">
-                  <span className="text-4xl font-semibold leading-normal">Hi</span> I&lsquo;m Philip Oyenola, a Fullstack
-                  Web Developer and AI Enthusiast born and brought up in Nigeria. I work remotely for private
-                  clients and companies, by developing high quality web apps for any type of brand or business.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <TransitionReveal addClass="space-y-6">
+              <p className="text-lg md:text-xl leading-relaxed text-slate-300">
+                <span className="text-3xl md:text-4xl font-extrabold text-white mr-2">Hi,</span>
+                I&lsquo;m <span className="text-primary font-semibold">Philip Oyenola</span>, a Fullstack Web Developer
+                and AI Enthusiast based in Nigeria. I specialize in building high-performance web applications,
+                automation tools, and modern digital solutions for businesses and private clients worldwide.
+              </p>
 
-                <div className="w-fit">
-                  <a download="Philip_Oyenola_Resume.pdf" href={"/docs/philipresume.pdf"}>
-                    <button className="flex items-center gap-2 px-4 py-2 transition-colors duration-300 bg-transparent border rounded-md hover:bg-primary hover:text-primaryBlack-100 border-primary text-primary">
-                      <span>Download CV</span> <DownloadIcon />
-                    </button>
-                  </a>
-                </div>
-              </TransitionReveal>
-              <TransitionReveal addClass="grid p-4 place-content-center relative" delay={0.2}>
-                <div className="absolute top-0 left-4 -z-10 star_icon">
-                  <Star />
-                </div>
+              <div className="pt-4">
+                <a download="Philip_Oyenola_Resume.pdf" href={"/docs/philipresume.pdf"}>
+                  <button className="inline-flex items-center gap-2 px-6 py-3 transition-all duration-300 bg-primary/10 border border-primary/40 rounded-xl hover:bg-primary hover:text-black font-semibold text-primary shadow-lg hover:shadow-primary/20">
+                    <span>Download CV</span> <DownloadIcon size={18} />
+                  </button>
+                </a>
+              </div>
+            </TransitionReveal>
 
-                <div className="top-0 left-0 grid w-full h-full md:absolute place-content-center">
-                  <div className="w-[300px] h-[300px] rounded-full flex items-center overflow-hidden border-8 border-primary/20">
-                    <Image
-                      src={"/images/bg/philip.jpeg"}
-                      alt="philip oyenola"
-                      width={300}
-                      height={300}
-                      className="w-full h-[150%] object-cover"
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-              </TransitionReveal>
-            </div>
+            <TransitionReveal addClass="flex justify-center relative" delay={0.2}>
+              <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-2xl overflow-hidden border-2 border-primary/30 shadow-2xl group hover:border-primary/80 transition-all duration-500">
+                <Image
+                  src={"/images/bg/philip.jpeg"}
+                  alt="Philip Oyenola"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  draggable={false}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+              </div>
+            </TransitionReveal>
           </div>
         </div>
       </section>
-
-      <div className="reset_bg"></div>
     </>
   );
 };
 
 export default About;
-// w-10 h-10 mx-auto overflow-hidden rounded-full bg-primary text-primary py-[10rem]

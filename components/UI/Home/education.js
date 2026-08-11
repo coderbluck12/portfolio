@@ -1,63 +1,41 @@
 import education from "@/lib/store/education";
 import { motion } from "framer-motion";
 import { CalendarDays } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const Education = () => {
-  const [animationDisabled, setAnimationDisable] = useState(false);
-
-  useEffect(() => {
-    if (window !== undefined && window.innerWidth <= 768) setAnimationDisable(true);
-  }, []);
-
-  const determineVariant = (idx) => {
-    // TODO: return to this later----
-    if (animationDisabled) {
-      return {
-        initial: { x: (idx + 1) % 2 === 0 ? 100 : -100, opacity: 0 },
-        whileInView: {
-          x: 0,
-          opacity: 1,
-          transition: {
-            type: "spring",
-            duration: 1,
-            stiffness: 50,
-          },
-        },
-        viewport: { once: true },
-      };
-    }
-
-    return {};
-  };
-
   return (
-    <section className="container my-20 mx-auto">
-      <h3 className="md:px-6 mb-5 text-3xl font-bold uppercase md:text-4xl text-start">
-        Education<span className="text-primary">.</span>
-      </h3>
+    <section className="container my-28 mx-auto">
+      <div className="mb-12">
+        <span className="text-xs uppercase tracking-widest text-primary font-bold">Background</span>
+        <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
+          Education<span className="text-primary">.</span>
+        </h3>
+      </div>
 
       <div className="relative timeline space-y-8 md:space-y-0">
         {education.map((edu, idx) => (
           <motion.div
             key={idx}
-            {...determineVariant(idx)}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
             className={
               (idx + 1) % 2 === 0
-                ? `relative w-full md:p-10 sm:w-1/2 sm:left-1/2 right-con group`
-                : `relative left-0 w-full md:p-10 sm:w-1/2 group`
+                ? `relative w-full md:p-8 sm:w-1/2 sm:left-1/2 right-con group`
+                : `relative left-0 w-full md:p-8 sm:w-1/2 group`
             }
           >
-            <span className="hidden duration-200 bullet-edu sm:block bg-primary group-hover:bg-primary"></span>
-            <div className="p-8 rounded-md bg-[#0f0f0f6f] duration-200 opacity-90">
-              <h4 className="text-xl font-bold">{edu.title}</h4>
-              <p className="mt-2">{edu.institution}</p>
+            <span className="hidden duration-300 bullet-edu sm:block bg-primary group-hover:scale-125 shadow-lg shadow-primary/30"></span>
+            <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-300 shadow-xl space-y-4">
+              <h4 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                {edu.title}
+              </h4>
+              <p className="text-slate-300 text-base">{edu.institution}</p>
 
-              <div className="flex items-center mt-8 opacity-75 text-slate-300">
-                <span>
-                  <CalendarDays />
-                </span>{" "}
-                <span className="ml-2">{edu.duration}</span>
+              <div className="flex items-center pt-2 text-sm text-slate-400 font-medium">
+                <CalendarDays size={16} className="text-primary mr-2" />
+                <span>{edu.duration}</span>
               </div>
             </div>
           </motion.div>

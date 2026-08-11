@@ -40,7 +40,7 @@ const ContactContent = () => {
     const gottenErrors = handleValidation();
     setErrors(gottenErrors);
 
-    if (Object.keys(gottenErrors).length >= 1) setStatus({ ...status, loading: false, success: false }); //
+    if (Object.keys(gottenErrors).length >= 1) setStatus({ ...status, loading: false, success: false });
     if (Object.keys(gottenErrors).length === 0) {
       const body = { name: formData.name, email: formData.email, content: formData.content };
 
@@ -65,129 +65,131 @@ const ContactContent = () => {
 
   return (
     <>
-      <div className="container my-10 section mt-28 md:mt-32">
-        <h1 className="mb-8 text-4xl font-bold text-center md:text-start">
-          Contact Me 📞🤙<span className="text-primary">.</span>
-        </h1>
+      <div className="container mx-auto my-16 section pt-20">
+        <div className="mb-12">
+          <span className="text-xs uppercase tracking-widest text-primary font-bold">Get In Touch</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
+            Contact Me<span className="text-primary">.</span>
+          </h1>
+        </div>
 
-        <div className="grid grid-cols-1 gap-4 mt-10 sm:grid-cols-2 sm:gap-6 md:gap-8">
-          <div className="mt-6 space-y-6">
-            <div className="p-4 border rounded-md border-primary">
-              <h2 className="text-2xl font-semibold">Dev Handle</h2>
-              <ul className="mt-1 space-y-2">
-                <li className="text-lg font-light">
-                  <span>Github</span> (<i className="ri-github-fill"></i>):{" "}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-xl">
+              <h2 className="text-xl font-bold text-white mb-3">Dev Handles</h2>
+              <ul className="space-y-3">
+                <li className="text-base text-slate-300 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <i className="ri-github-fill text-xl text-primary"></i> GitHub
+                  </span>
                   <Link target="_blank" href={"https://github.com/coderbluck12"}>
-                    <span className="font-bold text-primary">oyenolaphilipinc</span>
+                    <span className="font-semibold text-primary hover:underline">coderbluck12</span>
                   </Link>
                 </li>
               </ul>
             </div>
 
-            <div className="p-4 border rounded-md border-primary">
-              <h2 className="text-2xl font-semibold">Social Handle</h2>
-              <ul className="mt-1 space-y-2">
-                <li className="text-lg font-light">
-                  <span>Facebook</span> (<i className="ri-facebook-circle-fill"></i>):{" "}
-                  <Link target="_blank" href={"https://web.facebook.com/philipoyenola"}>
-                    <span className="font-bold text-primary">Philip Oyenola</span>
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-xl">
+              <h2 className="text-xl font-bold text-white mb-3">Social Connections</h2>
+              <ul className="space-y-3">
+                <li className="text-base text-slate-300 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <i className="ri-facebook-circle-fill text-xl text-primary"></i> Facebook
+                  </span>
+                  <Link target="_blank" href={"https://web.facebook.com/oyenolaphilip"}>
+                    <span className="font-semibold text-primary hover:underline">Philip Oyenola</span>
                   </Link>
                 </li>
-                <li className="text-lg font-light">
-                  <span>Instagram</span> (<i className="ri-instagram-fill"></i>):{" "}
+                <li className="text-base text-slate-300 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <i className="ri-instagram-fill text-xl text-primary"></i> Instagram
+                  </span>
                   <Link target="_blank" href={"https://www.instagram.com/philipoyenola/"}>
-                    <span className="font-bold text-primary">@philipoyenola</span>
+                    <span className="font-semibold text-primary hover:underline">@philipoyenola</span>
                   </Link>
                 </li>
-                <li className="text-lg font-light">
-                  <span>Twitter</span> (<i className="ri-twitter-fill"></i>):{" "}
+                <li className="text-base text-slate-300 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <i className="ri-twitter-fill text-xl text-primary"></i> Twitter / X
+                  </span>
                   <Link target="_blank" href={"https://twitter.com/oyenolaayomi"}>
-                    <span className="font-bold text-primary">@oyenolaayomi</span>
+                    <span className="font-semibold text-primary hover:underline">@oyenolaayomi</span>
                   </Link>
                 </li>
-                <li className="text-lg font-light">
-                  <span>WhatsApp</span> (<i className="ri-whatsapp-fill"></i>):{" "}
+                <li className="text-base text-slate-300 flex items-center justify-between">
+                  <span className="flex items-center gap-2">
+                    <i className="ri-whatsapp-fill text-xl text-primary"></i> WhatsApp
+                  </span>
                   <Link target="_blank" href={"https://wa.me/+2349117996123"}>
-                    <span className="font-bold text-primary">+234 (91) 1799 6123</span>
-                  </Link>
-                </li>
-                <li className="text-lg font-light">
-                  <span>Threads</span>:{" "}
-                  <Link target="_blank" href={"https://threads.net/@philip"}>
-                    <span className="font-bold text-primary">@philip</span>
+                    <span className="font-semibold text-primary hover:underline">+234 (91) 1799 6123</span>
                   </Link>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div>
-            <h3 className="block py-3 text-xl font-semibold sm:hidden">Send Me A Message</h3>
+          <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-xl">
+            <h3 className="text-xl font-bold text-white mb-6">Send Me A Message</h3>
             <form onSubmit={(event) => handleSubmit(event)}>
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="font-semibold">
-                    Name
+                  <label htmlFor="name" className="text-sm font-semibold text-slate-300">
+                    Your Name
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
-                    className={`block w-full bg-transparent outline-none border-2 duration-200 rounded-md p-2 border-b ${
-                      errors.name
-                        ? "border-red-700 focus:border-red-700 active:border-red-700"
-                        : "border-primary focus:border-primary/50 active:border-primary/80"
+                    className={`block w-full bg-white/[0.04] border outline-none rounded-xl px-4 py-3 text-white transition-all ${
+                      errors.name ? "border-red-500" : "border-white/10 focus:border-primary focus:ring-1 focus:ring-primary"
                     }`}
                     autoComplete="off"
                     value={formData.name}
                     onChange={(e) => handleChange(e)}
                   />
-                  {errors.name && <p className="text-sm font-bold text-red-700">{errors.name}</p>}
+                  {errors.name && <p className="text-xs font-semibold text-red-500">{errors.name}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="font-semibold">
-                    Email
+                  <label htmlFor="email" className="text-sm font-semibold text-slate-300">
+                    Your Email
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
-                    className={`block w-full bg-transparent outline-none border-2 duration-200 rounded-md p-2 border-b ${
-                      errors.email
-                        ? "border-red-700 focus:border-red-700 active:border-red-700"
-                        : "border-primary focus:border-primary/50 active:border-primary/80"
+                    className={`block w-full bg-white/[0.04] border outline-none rounded-xl px-4 py-3 text-white transition-all ${
+                      errors.email ? "border-red-500" : "border-white/10 focus:border-primary focus:ring-1 focus:ring-primary"
                     }`}
                     autoComplete="off"
                     value={formData.email}
                     onChange={(e) => handleChange(e)}
                   />
-                  {errors.email && <p className="text-sm font-bold text-red-700">{errors.email}</p>}
+                  {errors.email && <p className="text-xs font-semibold text-red-500">{errors.email}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="content" className="font-semibold">
-                    Message Content
+                  <label htmlFor="content" className="text-sm font-semibold text-slate-300">
+                    Message
                   </label>
                   <textarea
                     name="content"
                     id="content"
-                    rows="5"
-                    className={`block w-full bg-transparent outline-none border-2 border-primary focus:border-primary/50 active:border-primary/80 duration-200 rounded-md p-2 border-b resize-none ${
-                      errors.content
-                        ? "border-red-700 focus:border-red-700 active:border-red-700"
-                        : "border-primary focus:border-primary/50 active:border-primary/80"
+                    rows="4"
+                    className={`block w-full bg-white/[0.04] border outline-none rounded-xl px-4 py-3 text-white transition-all resize-none ${
+                      errors.content ? "border-red-500" : "border-white/10 focus:border-primary focus:ring-1 focus:ring-primary"
                     }`}
                     value={formData.content}
                     onChange={(e) => handleChange(e)}
                   ></textarea>
-                  {errors.content && <p className="text-sm font-bold text-red-700">{errors.content}</p>}
+                  {errors.content && <p className="text-xs font-semibold text-red-500">{errors.content}</p>}
                 </div>
 
-                <input
+                <button
                   type="submit"
-                  value={status.loading ? `Sending... 🕑` : "Send Message 🚀"}
-                  className={`w-full py-2 border-2 border-primary cursor-pointer rounded-md duration-200 hover:bg-primary hover:text-black outline-none focus:border-primary/50 focus:hover:bg-primary-30 disabled:bg-primary`}
+                  className="w-full py-3.5 px-6 font-semibold rounded-xl bg-primary text-black hover:bg-primaryDark transition-all duration-300 shadow-lg shadow-primary/20 disabled:opacity-50"
                   disabled={status.loading}
-                />
+                >
+                  {status.loading ? "Sending..." : "Send Message"}
+                </button>
               </div>
             </form>
           </div>

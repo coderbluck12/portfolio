@@ -1,4 +1,3 @@
-import { TransitionOpacityInView } from "@/lib/utils/transitions";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,81 +6,82 @@ import projectPreviews from "@/lib/store/project-previews";
 
 const Projects = () => {
   return (
-    <section className="container my-32">
-      <TransitionOpacityInView>
-        <h3 className="md:px-6 mb-5 text-3xl font-bold uppercase md:text-4xl text-start">
-          Projects <span className="text-primary">.</span>
+    <section className="container my-32 mx-auto">
+      <div className="mb-12">
+        <span className="text-xs uppercase tracking-widest text-primary font-bold">Portfolio Showcase</span>
+        <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight mt-1">
+          Featured Projects<span className="text-primary">.</span>
         </h3>
-      </TransitionOpacityInView>
+      </div>
 
-      <div className="relative timeline space-y-6 md:space-y-0">
+      <div className="relative timeline space-y-8 md:space-y-0">
         {projectPreviews.map((project, idx) => (
           <motion.div
             key={idx}
-            initial={{ x: (idx + 1) % 2 === 0 ? 100 : -100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", duration: 0.5, stiffness: 50 }}
+            transition={{ duration: 0.5, delay: idx * 0.1 }}
             className={
               (idx + 1) % 2 === 0
                 ? `relative w-full md:p-6 sm:w-1/2 sm:left-1/2 right-con group`
                 : `relative left-0 w-full md:p-6 sm:w-1/2 group`
             }
           >
-            <span className="hidden duration-200 bullet-edu sm:block bg-primary group-hover:bg-primary"></span>
-            <div className="p-2 rounded-md bg-[#0f0f0f6f] duration-200 opacity-90 space-y-2">
-              <div className="w-full overflow-hidden border border-opacity-25 rounded-lg border-primary">
+            <span className="hidden duration-300 bullet-edu sm:block bg-primary group-hover:scale-125 shadow-lg shadow-primary/30"></span>
+            <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md hover:border-primary/40 transition-all duration-300 shadow-xl space-y-4">
+              <div className="w-full overflow-hidden rounded-xl border border-white/10 group-hover:border-primary/30 transition-colors">
                 <Image
                   src={project.imageSrc}
                   alt={project.imageText}
-                  width={500}
-                  height={500}
-                  className="object-cover w-full"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full aspect-video group-hover:scale-105 transition-transform duration-500"
                   draggable="false"
-                ></Image>
+                />
               </div>
 
-              <div className="flex items-center justify-between py-2">
-                <h4 className="text-2xl font-bold">{project.name}</h4>
+              <div className="flex items-center justify-between py-1">
+                <h4 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                  {project.name}
+                </h4>
 
                 <Link href={project.viewLink}>
-                  <p className="flex items-center px-2 py-1 space-x-1 text-sm duration-200 border rounded-md border-primary hover:bg-primary hover:text-black">
-                    <span>View</span> <Expand size={20} />
-                  </p>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-primary/30 text-primary hover:bg-primary hover:text-black transition-all shadow-md">
+                    <span>View</span> <Expand size={14} />
+                  </span>
                 </Link>
               </div>
 
-              <>{project.descriptionContent}</>
+              <div className="text-slate-300 text-sm leading-relaxed">{project.descriptionContent}</div>
 
-              <div className="flex flex-wrap">
-                {project.techStack.map((tech, idx) => (
-                  <p
-                    key={idx}
-                    className="px-2 py-1 mt-2 mr-2 text-sm duration-200 border border-white border-opacity-25 cursor-pointer hover:bg-primary hover:text-black hover:border-transparent rounded-xl"
+              <div className="flex flex-wrap gap-2 pt-1">
+                {project.techStack.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="px-2.5 py-1 text-xs font-medium rounded-md bg-white/5 border border-white/10 text-slate-300 group-hover:border-primary/20 transition-colors"
                   >
                     {tech}
-                  </p>
+                  </span>
                 ))}
               </div>
 
-              <div className="flex items-center mt-4 opacity-75 text-slate-300">
-                <span>
-                  <CalendarDays />
-                </span>{" "}
-                <span className="ml-2">{project.duration}</span>
+              <div className="flex items-center pt-2 text-xs text-slate-400 font-medium">
+                <CalendarDays size={14} className="text-primary mr-1.5" />
+                <span>{project.duration}</span>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-5 text-center">
+      <div className="mt-12 text-center">
         <Link href={"/projects"}>
-          <button className="px-3 py-1 duration-200 border rounded-sm text-primary border-primary hover:bg-primary hover:text-black group">
-            View All Projects <i className="ri-arrow-right-circle-line"></i>
+          <button className="px-6 py-3 transition-all duration-300 bg-primary/10 border border-primary/40 rounded-xl hover:bg-primary hover:text-black font-semibold text-primary shadow-lg hover:shadow-primary/20">
+            View All Projects <i className="ri-arrow-right-line ml-1"></i>
           </button>
         </Link>
-      </motion.div>
+      </div>
     </section>
   );
 };
